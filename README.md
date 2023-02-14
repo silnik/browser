@@ -33,13 +33,13 @@ WhichBrowser requires with PHP 7.0 or higher and supports PHP 8. WhichBrowser is
 How to install it
 -----------------
 
-You can install WhichBrowser by using Composer - the standard package manager for PHP. The package is called `whichbrowser/parser`.
+You can install WhichBrowser by using Composer - the standard package manager for PHP. The package is called `silnik/browser`.
 
-    composer require whichbrowser/parser
+    composer require silnik/browser
 
 You can easily update WhichBrowser by running a simple command.
 
-    composer update whichbrowser/parser
+    composer update silnik/browser
 
 You should run this command as often as possible. You might even want to consider setting up a cron job for this purpose.
 
@@ -57,18 +57,18 @@ The first step require the Composer autoloader:
     require 'vendor/autoload.php';
 ```
 
-The second step is to create a new `WhichBrowser\Parser` object. This object will contain all the information the library could find about the browser. The object has a required parameter, either the headers send by the browser, or a useragent string. Using the headers is preferable, because it will allow a better detection, but if you have just the useragent string, this will also work.
+The second step is to create a new `Silnik/Browser` object. This object will contain all the information the library could find about the browser. The object has a required parameter, either the headers send by the browser, or a useragent string. Using the headers is preferable, because it will allow a better detection, but if you have just the useragent string, this will also work.
 
 For example:
 
 ```php
-$result = new WhichBrowser\Parser(getallheaders());
+$result = new Silnik/Browser(getallheaders());
 ```
 
 or:
 
 ```php
-$result = new WhichBrowser\Parser($_SERVER['HTTP_USER_AGENT']);
+$result = new Silnik/Browser($_SERVER['HTTP_USER_AGENT']);
 ```
 
 
@@ -153,7 +153,7 @@ It is possible to set additional options by passing an array as the second param
 In some cases you may want to disable the detection of bots. This allows the bot the deliberately fool WhichBrowser, so you can pick up the identity of useragent what the bot tries to mimic. This is especially handy when you want to use Silnik\Browser to switch between different variants of your website and want to make sure crawlers see the right variant of the website. For example, a bot that mimics a mobile device will see the mobile variant of you site.
 
 ```php
-$result = new WhichBrowser\Parser(getallheaders(), [ 'detectBots' => false ]);
+$result = new Silnik/Browser(getallheaders(), [ 'detectBots' => false ]);
 ```
 
 Enable result caching
@@ -167,7 +167,7 @@ For example, if you want to enable a memcached based cache you need to install a
 
     composer require cache/memcached-adapter
 
-And change the call to WhichBrowser/Parser as follows:
+And change the call to silnik/browser as follows:
 
 ```php
 $client = new \Memcached();
@@ -175,7 +175,7 @@ $client->addServer('localhost', 11211);
 
 $pool = new \Cache\Adapter\Memcached\MemcachedCachePool($client);
 
-$result = new WhichBrowser\Parser(getallheaders(), [ 'cache' => $pool ]);
+$result = new Silnik/Browser(getallheaders(), [ 'cache' => $pool ]);
 ```
 
 or
@@ -186,7 +186,7 @@ $client->addServer('localhost', 11211);
 
 $pool = new \Cache\Adapter\Memcached\MemcachedCachePool($client);
 
-$result = new WhichBrowser\Parser();
+$result = new Silnik/Browser();
 $result->setCache($pool);
 $result->analyse(getallheaders());
 ```
@@ -199,7 +199,7 @@ API reference
 
 ### The Parser object
 
-After a new `WhichBrowser\Parser` object is created, it contains a number of properties and functions. All of these properties are guaranteed to be present.
+After a new `Silnik/Browser` object is created, it contains a number of properties and functions. All of these properties are guaranteed to be present.
 
 **Properties:**
 
@@ -241,7 +241,7 @@ Get a human readable representation of the detected browser, including operating
 
 ### The browser object
 
-An object of the `WhichBrowser\Model\Browser` class is used for the `browser` property of the main `WhichBrowser\Parser` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
+An object of the `Silnik\Browser\Model\Browser` class is used for the `browser` property of the main `Silnik/Browser` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
 
 **Properties:**
 
@@ -284,7 +284,7 @@ Get a human readable representation of the detected browser
 
 ### The engine object
 
-An object of the `WhichBrowser\Model\Engine` class is used for the `engine` property of the main `WhichBrowser\Parser` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
+An object of the `Silnik\Browser\Model\Engine` class is used for the `engine` property of the main `Silnik/Browser` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
 
 **Properties:**
 
@@ -307,7 +307,7 @@ Get a human readable representation of the detected rendering engine
 
 ### The os object
 
-An object of the `WhichBrowser\Model\Os` class is used for the `os` property of the main `WhichBrowser\Parser` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
+An object of the `Silnik\Browser\Model\Os` class is used for the `os` property of the main `Silnik/Browser` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
 
 **Properties:**
 
@@ -335,7 +335,7 @@ Get a human readable representation of the detected operating system
 
 ### The device object
 
-An object of the `WhichBrowser\Model\Device` class is used for the `device` property of the main `WhichBrowser\Parser` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
+An object of the `Silnik\Browser\Model\Device` class is used for the `device` property of the main `Silnik/Browser` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
 
 **Properties:**
 
@@ -402,7 +402,7 @@ Get a human readable representation of the detected device
 
 ### The family object
 
-An object of the `WhichBrowser\Model\Family` class is used for the `family` property of the `WhichBrowser\Model\Browser` and `WhichBrowser\Model\Os` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
+An object of the `Silnik\Browser\Model\Family` class is used for the `family` property of the `Silnik\Browser\Model\Browser` and `Silnik\Browser\Model\Os` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
 
 **Properties:**
 
@@ -425,7 +425,7 @@ Get a human readable representation of the family
 
 ### The using object
 
-An object of the `WhichBrowser\Model\Using` class is used for the `using` property of the `WhichBrowser\Model\Browser` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
+An object of the `Silnik\Browser\Model\Using` class is used for the `using` property of the `Silnik\Browser\Model\Browser` object and contains a number of properties. If a property is not applicable in this situation it will be null or undefined.
 
 **Properties:**
 
@@ -448,7 +448,7 @@ Get a human readable representation of the webview
 
 ### The version object
 
-An object of the `WhichBrowser\Model\Version` class is used for the `version` property of the `browser`, `engine` and `os` object and contains a number of properties and functions. If a property is not applicable in this situation it will be null or undefined.
+An object of the `Silnik\Browser\Model\Version` class is used for the `version` property of the `browser`, `engine` and `os` object and contains a number of properties and functions. If a property is not applicable in this situation it will be null or undefined.
 
 **Properties:**
 
