@@ -2,7 +2,7 @@
 
 include_once __DIR__ . '/bootstrap.php';
 
-use WhichBrowser\Parser;
+use Silnik\Browser\Parser;
 
 $command = 'exec';
 $options = [];

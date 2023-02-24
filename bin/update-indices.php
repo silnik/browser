@@ -2,7 +2,7 @@
 
 include_once __DIR__ . '/bootstrap.php';
 
-use WhichBrowser\Data\DeviceModels;
+use Silnik\Browser\Data\DeviceModels;
 use ReverseRegex\Lexer;
 
 $command = 'list';
@@ -84,7 +84,7 @@ function command_list($type) {
 
     $file  = "<" . "?php\n";
     $file .= "\n";
-    $file .= "namespace WhichBrowser\\Data;\n";
+    $file .= "namespace Silnik\Browser\\Data;\n";
     $file .= "\n";
     $file .= "DeviceModels::\$" . strtoupper($type) . "_INDEX = " . var_export($index, true) . ";\n";
 

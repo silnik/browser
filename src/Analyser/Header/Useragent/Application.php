@@ -50,7 +50,7 @@ trait Application
         if (preg_match('/Android [0-9\.]+; (.*) Sony\/.*SonySelectSDK\/([0-9\.]+)/iu', $ua, $match)) {
             $this->data->browser->reset();
             $this->data->browser->type = Constants\BrowserType::APP;
-            $this->data->browser->using = new \WhichBrowser\Model\Using([
+            $this->data->browser->using = new \Silnik\Browser\Model\Using([
                 'name' => 'Sony Select SDK',
                 'version' => new Version([ 'value' => $match[2], 'details' => 2 ])
             ]);

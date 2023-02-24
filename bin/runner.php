@@ -2,8 +2,8 @@
 
 include_once __DIR__ . '/bootstrap.php';
 
-use WhichBrowser\Testrunner;
-use WhichBrowser\Tests;
+use Silnik\Browser\Testrunner;
+use Silnik\Browser\Tests;
 use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeCoverage\Report\Clover;
 

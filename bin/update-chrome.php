@@ -32,26 +32,26 @@
 
 
 	foreach ($stable['desktop'] as $i => $version) {
-		if (!isset(WhichBrowser\Data\Chrome::$DESKTOP[$version])) {
-			WhichBrowser\Data\Chrome::$DESKTOP[$version] = 'stable';
+		if (!isset(Silnik\Browser\Data\Chrome::$DESKTOP[$version])) {
+			Silnik\Browser\Data\Chrome::$DESKTOP[$version] = 'stable';
 		}
 	}
 
 	foreach ($stable['mobile'] as $i => $version) {
-		if (!isset(WhichBrowser\Data\Chrome::$MOBILE[$version])) {
-			WhichBrowser\Data\Chrome::$MOBILE[$version] = 'stable';
+		if (!isset(Silnik\Browser\Data\Chrome::$MOBILE[$version])) {
+			Silnik\Browser\Data\Chrome::$MOBILE[$version] = 'stable';
 		}
 	}
 
 
 	$result  = "";
 	$result .= "<?php\n\n";
-	$result .= "namespace WhichBrowser\Data;\n\n";
+	$result .= "namespace Silnik\Browser\Data;\n\n";
 	$result .= "Chrome::\$DESKTOP = [\n";
-	foreach (WhichBrowser\Data\Chrome::$DESKTOP as $version => $channel) $result .= "    '{$version}' => '{$channel}',\n";
+	foreach (Silnik\Browser\Data\Chrome::$DESKTOP as $version => $channel) $result .= "    '{$version}' => '{$channel}',\n";
 	$result .= "];\n\n";
 	$result .= "Chrome::\$MOBILE = [\n";
-	foreach (WhichBrowser\Data\Chrome::$MOBILE as $version => $channel) $result .= "    '{$version}' => '{$channel}',\n";
+	foreach (Silnik\Browser\Data\Chrome::$MOBILE as $version => $channel) $result .= "    '{$version}' => '{$channel}',\n";
 	$result .= "];\n";
 
 

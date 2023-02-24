@@ -42,7 +42,7 @@ trait Using
         $count = count($items);
         for ($i = 0; $i < $count; $i++) {
             if (preg_match($items[$i]['regexp'], $ua, $match)) {
-                $this->data->browser->using = new \WhichBrowser\Model\Using([
+                $this->data->browser->using = new \Silnik\Browser\Model\Using([
                     'name' => $items[$i]['name']
                 ]);
 
